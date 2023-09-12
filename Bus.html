@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus booking</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bus{
+            background: whitesmoke;
+            width: calc(35%);
+            height: calc(90%);
+            border: 1px solid black;;
+        }
+        .logo{
+            border-bottom: 1px solid black;
+            height: calc(25%);
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+        }
+        .logo h1{
+            font-size: 37px;
+            color: rgb(233, 154, 9);
+            margin-top: 39px;
+        }
+        .logo h2{
+            font-size: 22px;
+            position: absolute;
+            margin-top: -21px;
+            margin-left: 20px;
+            color: gray;
+        }
+        .logo p{
+            font-size: 16px;
+            position: absolute;
+            margin-top: 26px;
+            color: grey;
+        }
+        .logo img{
+            width: 180px;
+            height: 180px;
+        }
+        .destination{
+            height: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid black;
+        }
+        .destination div{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .destination img{
+            width: 8%;
+            transform: rotate(90deg);
+        }
+        #from{
+            width: 60%;
+            height: 40px;
+            position: absolute;
+            top: 23px;
+        }
+        #to{
+            width: 60%;
+            height: 40px;
+        }
+        #buses{
+            height: 10%;
+            font-size: 26px;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 40%;
+            position: relative;
+        }
+        #location{
+            position: absolute;
+            left: 78px;
+            font-size: 25   px;
+            color: blue;
+        }
+        #destination{
+            position: absolute;
+            right: 95px;
+            font-size: 25px;
+            color: blue;
+        }
+        #busdata{
+            height: 40%;
+            width: 100%;
+            margin-top: 72px;
+        }
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        #price1,#price2{
+            font-size: 18px;
+        }
+        table{
+            margin-top: 35px;
+            width: 100%;
+        }
+        td{
+            padding: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bus">
+        <div class="logo">
+            <div>
+                <h1>Anmol</h1>
+                <h2>Bus Services</h2>
+                <p>The online booking website</p>
+            </div>
+            <img src="https://png.pngtree.com/png-vector/20220912/ourmid/pngtree-high-detailed-bus-vector-png-image_6172563.png" alt="">
+        </div>
+        <div class="destination">
+            <div>
+                <select id="from" onchange="travel()">
+                    <option value="From">From</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Bangalore">Bangalore</option>
+                </select>
+            </div>
+            <img src="/ico.png" alt="">
+            <div>
+                <select id="to" onchange="destination()">
+                    <option value="To">To</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Bangalore">Bangalore</option>
+                </select>
+            </div>
+        </div>
+        <div id="buses">
+                From: <div id="location"></div>
+                To: <div id="destination"></div>
+        </div>
+        <div id="busdata">
+            <table>
+                <tr>
+                    <th>Bus name</th>
+                    <th>Time Taken</th>
+                    <th>Bus time</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td id="name1"></td>
+                    <td id="timeTaken1"></td>
+                    <td id="time1"></td>
+                    <td id="price1"></td>
+                </tr>
+                <tr>
+                    <td id="name2"></td>
+                    <td id="timeTaken2"></td>
+                    <td id="time2"></td>
+                    <td id="price2"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function travel(){
+            let from = document.getElementById("from").value;
+            document.getElementById("location").innerHTML = from;
+        }
+        function destination(){
+            let to = document.getElementById("to").value;
+            document.getElementById("destination").innerHTML = to;
+            busData();
+        }
+    
+        function busData(){
+            let from = document.getElementById("from").value;
+            let to = document.getElementById("to").value;
+        
+            if(from=="Hyderabad"&&to=="Pune"){
+                document.getElementById("name1").innerHTML="Express Non AC Seater 2+3";
+                document.getElementById("name2").innerHTML="SUPER LUXURY (NON-AC, 2 + 2 PUSH BACK)";
+                document.getElementById("timeTaken1").innerHTML="14h 15m";
+                document.getElementById("timeTaken2").innerHTML="12h 50m";
+                document.getElementById("time1").innerHTML="04:15";
+                document.getElementById("time2").innerHTML="06:50";
+                document.getElementById("price1").innerHTML="761";
+                document.getElementById("price2").innerHTML="906";
+            }else if(to=="Hyderabad"&&from=="Pune"){
+                document.getElementById("name1").innerHTML="SUPER LUXURY (NON-AC, 2 + 2 PUSH BACK)";
+                document.getElementById("name2").innerHTML="Express Non AC Seater 2+3";
+                document.getElementById("timeTaken1").innerHTML="12h 50m";
+                document.getElementById("timeTaken2").innerHTML="14h 15m";
+                document.getElementById("time1").innerHTML="19:00";
+                document.getElementById("time2").innerHTML="18:30";
+                document.getElementById("price1").innerHTML="906";
+                document.getElementById("price2").innerHTML="761";
+            }else if(from=="Hyderabad"&&to=="Bangalore"){
+                document.getElementById("name1").innerHTML="GARUDA PLUS (VOLVO / BENZ A.C Multi Axle)";
+                document.getElementById("name2").innerHTML="Lahari A/C sleeper";
+                document.getElementById("timeTaken1").innerHTML="10h 35m";
+                document.getElementById("timeTaken2").innerHTML="09h 50m";
+                document.getElementById("time1").innerHTML="16:35";
+                document.getElementById("time2").innerHTML="04:00";
+                document.getElementById("price1").innerHTML="660";
+                document.getElementById("price2").innerHTML="1255";
+            }else if(to=="Hyderabad"&&from=="Bangalore"){
+                document.getElementById("name2").innerHTML="GARUDA PLUS (VOLVO / BENZ A.C Multi Axle)";
+                document.getElementById("name1").innerHTML="Lahari A/C sleeper";
+                document.getElementById("timeTaken2").innerHTML="10h 35m";
+                document.getElementById("timeTaken1").innerHTML="09h 50m";
+                document.getElementById("time1").innerHTML="03:00";
+                document.getElementById("time2").innerHTML="13:50";
+                document.getElementById("price2").innerHTML="660";
+                document.getElementById("price1").innerHTML="1255";
+            }else{
+                document.getElementById("name2").innerHTML="";
+                document.getElementById("name1").innerHTML="";
+                document.getElementById("timeTaken2").innerHTML="";
+                document.getElementById("timeTaken1").innerHTML="";
+                document.getElementById("time1").innerHTML="";
+                document.getElementById("time2").innerHTML="";
+                document.getElementById("price2").innerHTML="";
+                document.getElementById("price1").innerHTML="";
+            }
+        }
+    </script>
+</body>
+</html>
